@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <title>Hello world</title>
+   </head>
+   <script src = "/socket.io/socket.io.js"></script>
+   
+   <script>
+      var socket = io();
+      function emit0() {
+          socket.emit('answer0','0')
+      }
+      function emit1() {
+          socket.emit('answer1','1')
+      }
+      function emit2() {
+          socket.emit('answer2','2')
+      }
+      function emit3() {
+          socket.emit('answer3','3')
+      }
+      function emitGameId() {
+          socket.emit('m', document.getElementById('m').value)
+      }
+      function gameid() {
+        var variable = document.getElementById('input_id').value;
+        socket.emit('gameid',variable)
+      }
+      function botAmount() {
+        var variable = document.getElementById('input_id1').value;
+        socket.emit('amount',variable)
+      }
+      function botName() {
+        var variable = document.getElementById('input_id2').value;
+        socket.emit('name',variable)
+      }
+      function start() {
+        socket.emit('start')
+      }
+   </script>
+   <body>
+       <button onclick="emit0()">0</button>
+       <button onclick="emit1()">1</button>
+       <button onclick="emit2()">2</button>
+       <button onclick="emit3()">3</button>
+        <form>
+          <input type="text" id="input_id" value="">
+          <input type="button" value="Submit Game Id" autocomplete="off" onclick="gameid()">
+        </form>
+        <form>
+            <input type="text" id="input_id1" value="">
+            <input type="button" value="Submit Bot Amount" autocomplete="off" onclick="botAmount()">
+        </form>
+        <form>
+            <input type="text" id="input_id2" value="">
+            <input type="button" value="Submit Bot Names" autocomplete="off" onclick="botName()">
+        </form>
+        <button onclick="start()">Start Bots</button>
+   </body>
+</html>
